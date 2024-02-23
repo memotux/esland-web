@@ -1,23 +1,24 @@
-import styles from "@/components/styles/Button.module.css"
+import { defineComponent } from 'vue'
+import styles from '@/components/styles/Button.module.css'
 
-interface Props {
-  children?: preact.ComponentChildren
-  onClick?: (e:MouseEvent) => any
+interface ButtonProps {
   id?: string
   className?: string
   target?: string
   url: string
 }
 
-export default function Button({ children, onClick,url, target, className, ...rest }:Props) {
-  return (
-    
-<a
-  href={url}
-  target={`${target ?? '_blank'}`}
-  rel="noopener noreferrer"
-  onClick={onClick}
-  class={`
+export default defineComponent<ButtonProps>({
+  emits: ['click'],
+  render() {
+    const { url, target, className } = this.$props
+    return (
+      <a
+        href={url}
+        target={`${target ?? '_blank'}`}
+        rel="noopener noreferrer"
+        onClick={() => this.$emit('click')}
+        class={`
   lg:text-2xl
   md:px-5
   md:text-xl
@@ -33,12 +34,11 @@ export default function Button({ children, onClick,url, target, className, ...re
     rounded-full
     uppercase
     ${styles.button}
-    ${className ?? ''}`
-  }
-  {...rest}
->
-  {children}
-</a>
-
-  )
-}
+    ${className ?? ''}`}
+        {...this.$attrs}
+      >
+        {this.$slots.default!()}
+      </a>
+    )
+  },
+})
