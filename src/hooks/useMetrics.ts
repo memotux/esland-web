@@ -1,35 +1,42 @@
-import { useEffect, useRef, useState } from "preact/hooks"
+import { onMounted, onUnmounted, ref, watch } from "vue"
 import editionsInfo from "@/data/editions-info.json"
 
-export const useMetrics = ({edicion}:{edicion:string}) => {
-    const [metrics, setMetrics] = useState({views:0,news:0,media:0})
-    const [isIntersecting, setIsIntersecting] = useState(false)
-    const numerosRef = useRef<HTMLDivElement>(null)
+export const useMetrics = ({ edicion }: { edicion: string }) => {
+    const metrics = ref({ views: 0, news: 0, media: 0 })
+    const isIntersecting = ref(false)
+    const numerosRef = ref<HTMLDivElement>()
+    let observer: IntersectionObserver
 
-    useEffect(() => {
-        if(!isIntersecting) return
-        const _metric = editionsInfo[Number(edicion)-1].metrics
-        setMetrics(_metric)
-    },[edicion,isIntersecting])
+    watch(isIntersecting, () => {
+        if (!isIntersecting.value) {
+            metrics.value = { views: 0, news: 0, media: 0 }
+            return
+        }
 
+        metrics.value = editionsInfo[Number(edicion) - 1].metrics
+    })
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry.intersectionRatio > 0) {
-            setIsIntersecting(true)
+    onMounted(() => {
+        if (!numerosRef.value) return
+
+        observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.intersectionRatio > 0) {
+                    isIntersecting.value = true
+                } else {
+                    isIntersecting.value = false
+                }
             }
-        }
         )
-        if (!numerosRef.current) return
-    
-        observer.observe(numerosRef.current)
 
-        return () => {
-        if (!numerosRef.current) return
-        observer.unobserve(numerosRef.current)
-        }
-    }, [])
+        observer.observe(numerosRef.value)
+    })
+    onUnmounted(() => {
+        if (!numerosRef.value) return
+        console.log('unobserve');
+
+        observer.unobserve(numerosRef.value)
+    })
 
     return {
         numerosRef,

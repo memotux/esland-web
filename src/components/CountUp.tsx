@@ -1,15 +1,34 @@
+import { defineComponent, watch } from 'vue'
 import { useProgressiveNumber } from '@/hooks/useProgressiveNumber'
-import { useEffect} from 'preact/hooks'
 
-export const CountUp = (
-  { initial, final, decimals, duration }:
-  { initial: number, final: number, decimals?: number, duration?: number }
-) => {
-  const [count, setCount] = useProgressiveNumber(initial, duration, decimals)
+export default defineComponent({
+  props: {
+    initial: {
+      type: Number,
+      required: true,
+    },
+    final: {
+      type: Number,
+      required: true,
+    },
+    decimals: Number,
+    duration: Number,
+  },
+  setup(props) {
+    const [count, setCount] = useProgressiveNumber(
+      props.initial,
+      props.duration,
+      props.decimals
+    )
 
-  useEffect(() => {
-    setCount(String(final))
-  }, [final])
+    watch(
+      () => props.final,
+      () => {
+        setCount(String(props.final))
+      },
+      { immediate: true }
+    )
 
-  return <span>{count}</span>
-}
+    return () => <span>{count.value}</span>
+  },
+})
