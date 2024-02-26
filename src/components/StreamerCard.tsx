@@ -9,7 +9,7 @@ interface Props {
   background: string
 }
 
-export default function StreamerCard(props: Props) {
+function StreamerCard(props: Props) {
   return (
     <div
       class={`max-w-full rounded-lg shadow ${props.background} border-[#0d507a] animate-fade-up`}
@@ -28,11 +28,17 @@ export default function StreamerCard(props: Props) {
           {props.name}
         </p>
         <p class="mt-5 flex flex-col mb-3 font-normal text-gray-700 dark:text-gray-400 uppercase">
-          <strong>Comunidad: {props.comunidad}</strong>
-          <strong>Streamers: {props.streamers}</strong>
-          <strong>Total: {props.total}</strong>
+          <strong>
+            Comunidad: <>{props.comunidad}</>
+          </strong>
+          <strong>{`Streamers: ${props.streamers}`}</strong>
+          <strong>
+            Total: <span>{props.total}</span>
+          </strong>
         </p>
       </div>
     </div>
   )
 }
+
+export default StreamerCard
