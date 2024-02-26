@@ -1,4 +1,4 @@
-import { onUnmounted, onUpdated, ref, watch, type Ref, toRef, onMounted, computed, watchEffect } from 'vue'
+import { onUnmounted, ref, watch, type Ref, computed } from 'vue'
 
 export const useProgressiveNumber = (
 	initialValue: number | (() => number),
@@ -6,8 +6,8 @@ export const useProgressiveNumber = (
 	decimals = 0,
 	delay = 5
 ): [Ref<string>, (value: string | ((prevTarget: number) => number)) => void] => {
-	const target = toRef(typeof initialValue === 'function' ? initialValue() : initialValue)
-	const current = toRef(typeof initialValue === 'function' ? initialValue() : initialValue)
+	const target = ref(typeof initialValue === 'function' ? initialValue() : initialValue)
+	const current = ref(typeof initialValue === 'function' ? initialValue() : initialValue)
 	const steps = ref(1)
 	const currentStep = ref(1);
 	const value = computed(() => current.value.toFixed(decimals))
@@ -24,6 +24,9 @@ export const useProgressiveNumber = (
 	}
 
 	watch(currentStep, () => {
+		if (timeout) {
+			clearTimeout(timeout)
+		}
 		timeout = setTimeout(
 			() => {
 				const progress = currentStep.value / steps.value;
