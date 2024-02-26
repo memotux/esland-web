@@ -1,4 +1,4 @@
-import { defineComponent, watch } from 'vue'
+import { defineComponent, watchEffect } from 'vue'
 import { useProgressiveNumber } from '@/hooks/useProgressiveNumber'
 
 export default defineComponent({
@@ -21,13 +21,9 @@ export default defineComponent({
       props.decimals
     )
 
-    watch(
-      () => props.final,
-      () => {
-        setCount(String(props.final))
-      },
-      { immediate: true }
-    )
+    watchEffect(() => {
+      setCount(String(props.final))
+    })
 
     return () => <span>{count.value}</span>
   },
