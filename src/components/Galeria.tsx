@@ -6,6 +6,7 @@ import { useGallery } from '@/hooks/useGallery'
 import '@/components/styles/Galeria.css'
 
 export default defineComponent({
+  name: 'Galeria',
   props: {
     i18n: {
       type: Object,

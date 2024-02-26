@@ -6,6 +6,7 @@ import editions from '@/data/editions-info.json'
 import styles from '@/components/styles/Editions.module.css'
 
 export default defineComponent({
+  name: 'Editions',
   props: ['i18n'],
   setup(props) {
     const edicion = ref('1')
