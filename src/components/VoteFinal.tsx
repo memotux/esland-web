@@ -18,37 +18,7 @@ interface VoteFinalProps {
   categoryNames: string[]
 }
 
-// export const VoteFinal = ({
-//   candidates,
-//   votes,
-//   setCategory,
-//   categoryNames,
-// }: {
-//   candidates: typeof CandidatesType
-//   votes: Votes
-//   setCategory: Function
-//   categoryNames: string[]
-// }) =>
-
 export default defineComponent<VoteFinalProps>({
-  // props: {
-  //   candidates: {
-  //     type: Array,
-  //     required: true
-  //   },
-  //   votes: {
-  //     type: Array,
-  //     required: true
-  //   },
-  //   setCategory: {
-  //     type: Function,
-  //     required: true
-  //   },
-  //   categoryNames:{
-  //     type: Array,
-  //     required: true
-  //   }
-  // },
   setup(props) {
     console.log({ props })
 
