@@ -100,11 +100,11 @@ const bkg = session ? 'vote-system-bkg.webp' : 'vota-bkg.webp'
             <div class="flex items-center gap-4">
               <img
                 class="w-12 h-12 rounded-full"
-                src={session.user?.image}
+                src={session?.user?.image}
                 alt=""
               />
               <div class="text-yellow-300">
-                <h4 class="font-bold text-xl">{session.user?.name}</h4>
+                <h4 class="font-bold text-xl">{session?.user?.name}</h4>
                 <button
                   id="logout-button"
                   class="text-sm hover:border-white border-b font-light border-transparent text-white flex justify-center items-center gap-x-2"
