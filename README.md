@@ -108,6 +108,40 @@ pnpm dev
   <img src="https://contrib.rocks/image?repo=midudev/esland-web" />
 </a>
 
+## 🔑 Get your Github Client ID and Secret
+
+In this branch I use Github, because I don't have a Twitch account. (But you can use [Twitch](/#-get-your-twitch-client-id-and-secret) if you like.)
+
+First, on your proyect folder, copy and rename `.env.example` file to `.env`.
+
+Then, on your browser, you must be logged into your Github account. Go to your [Settings](https://github.com/settings/profile) page by clicking on your avatar, and in the popup menu, find and click on **'Settings'**.
+
+![Settings](resourses/github_settings.png)
+
+Once you're on Settings page, scroll down, on left side menu, at the end, click on [**'Delevoper Settings'**](https://github.com/settings/apps)
+
+![Developer Settings](resourses/github_developer.png)
+
+When you're in the `/settings/apps` page. In the left menu, select [**'OAuth Apps'**](https://github.com/settings/developers)
+
+Then, search for **'New OAuth App'** button on right side of the screen. And click it.
+
+![create github new oauth app](resourses/github_new_auth_app.png)
+
+Then you'll need to register your app. Fill the fields as the follow example and click the **'Register application'** button.
+
+![fill the fields](resourses/github_register_fields.png)
+
+After that, the page will redirect you to the OAuth application settings page.
+
+Find **_Client secrets_** section, and click in **'Generate a new client secret'** (if needed, complete authentication process). Copy the new generated client secret (this is the only time you will see it. But, you can generate more later) and paste it on your `.env` file after `GITHUB_CLIENT_SECRET=`.
+
+![Client Secret](resourses/github_secret.png)
+
+Finally, you'll need your **_client ID_**. Find it above **_Client secrets_**. Copy and paste it on your `.env` file, after `GITHUB_CLIENT_ID=`.
+
+![get client id](resourses/github_client.png)
+
 ## 🔑 Get your Twitch client ID and secret
 
 Before being able to initialize the application, you will need to obtain your **_client ID_** and **_client secret_** from Twitch.
