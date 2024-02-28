@@ -51,6 +51,7 @@
 ## 🛠️ Stack
 
 - [**Astro**](https://astro.build/) - The web framework for content-driven websites.
+- [**Vue**](https://vuejs.org/) - The Progressive JavaScript Framework.
 - [**Typescript**](https://www.typescriptlang.org/) - JavaScript with syntax for types.
 - [**Tailwindcss**](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
 - [**tailwindcss-animated**](https://github.com/new-data-services/tailwindcss-animated) - Extended animation utilities for Tailwind CSS.
@@ -58,10 +59,10 @@
 
 ## 🚀 Getting Started
 
-1. [Fork](https://github.com/midudev/esland-web/fork) or clone this repository.
+1. [Fork](https://github.com/memotux/esland-web/fork) or clone this repository.
 
 ```bash
-git clone git@github.com:midudev/esland-web.git
+git clone git@github.com:memotux/esland-web.git
 ```
 
 2. Install the dependencies:
@@ -109,7 +110,7 @@ pnpm dev
 
 ## 🔑 Get your Twitch client ID and secret
 
-Before being able to initialize the application, you will need to obtain your ***client ID*** and ***client secret*** from Twitch.
+Before being able to initialize the application, you will need to obtain your **_client ID_** and **_client secret_** from Twitch.
 
 First, you must to go to [dev.twitch.tv](https://dev.twitch.tv)
 
@@ -129,11 +130,11 @@ After that, the page will redirect you to the admin panel. Look for the applicat
 
 ![control panel](resourses/panel_de_admin.png)
 
-You'll go to the same page where you were when you registered your app. Scroll down, and you'll find your ***client ID*** as shown below:
+You'll go to the same page where you were when you registered your app. Scroll down, and you'll find your **_client ID_** as shown below:
 
 ![get the id](resourses/cliente_id.png)
 
-Finally, you'll need your ***client secret***. Below the place where you obtained your ***client ID***, you'll find the **'new secret'** button; click on it to get your secret.
+Finally, you'll need your **_client secret_**. Below the place where you obtained your **_client ID_**, you'll find the **'new secret'** button; click on it to get your secret.
 
 ![get the secret](resourses/secreto.png)
 
