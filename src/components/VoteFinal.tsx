@@ -20,8 +20,6 @@ interface VoteFinalProps {
 
 export default defineComponent<VoteFinalProps>({
   setup(props) {
-    console.log({ props })
-
     const result = ref(RESULT_STATUS.IDLE)
 
     onMounted(() => {
