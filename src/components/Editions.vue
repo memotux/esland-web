@@ -31,11 +31,11 @@ const edicion = ref('1')
     :i18n="i18n"
     :edicion="edicion"
   />
-  <!-- <Galeria
+  <Galeria
     :i18n="i18n"
     :edicion="edicion"
   />
-  <Numeros
+  <!-- <Numeros
     i18n="{i18n}"
     edicion="{edicion.value}"
   /> -->
