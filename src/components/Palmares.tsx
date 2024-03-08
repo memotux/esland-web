@@ -31,8 +31,8 @@ export default defineComponent({
         <h2 class="text-4xl lg:text-6xl text-center mb-10 lg:mb-20 uppercase font-tomaso">
           {props.i18n.AWARDS.TITLE}
         </h2>
-        <div class="flex flex-col lg:flex-row gap-10">
-          <div class="flex flex-col gap-2">
+        <div class="flex w-full flex-col lg:flex-row gap-10">
+          <div class="flex w-1/3 flex-col gap-2">
             {palmares.map((item) => {
               if (item.edition === props.edicion) {
                 return item.info.map((infoItem, i) => {
@@ -62,7 +62,7 @@ export default defineComponent({
             })}
           </div>
           {palmar.value && (
-            <div class="flex gap-3 items-end mr-5">
+            <div class="flex w-2/3 gap-3 items-end mr-5">
               {palmar.value.ganador && (
                 <StreamerCard
                   position="1º"
@@ -73,6 +73,7 @@ export default defineComponent({
                   foto={palmar.value.foto1}
                   total={palmar.value.total1 ?? 0}
                   background={'bg-finalista'}
+                  index={index.value}
                 />
               )}
               {palmar.value.finalista && (
@@ -85,6 +86,7 @@ export default defineComponent({
                   foto={palmar.value.foto2}
                   total={palmar.value.total2}
                   background={'bg-semifinalista'}
+                  index={index.value}
                 />
               )}
             </div>
