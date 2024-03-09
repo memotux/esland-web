@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Galeria from './Galeria.vue'
-import Numeros from './Numeros.tsx'
+import Numeros from './Numeros.vue'
 import Palmares from './Palmares.vue'
 import editions from '@/data/editions-info.json'
 import styles from '@/components/styles/Editions.module.css'
@@ -35,8 +35,8 @@ const edicion = ref('1')
     :i18n="i18n"
     :edicion="edicion"
   />
-  <!-- <Numeros
-    i18n="{i18n}"
-    edicion="{edicion.value}"
-  /> -->
+  <Numeros
+    :i18n="i18n"
+    :edicion="edicion"
+  />
 </template>
